@@ -32,9 +32,9 @@ global inherited sharing class rest_ApexRouter {
             System.Debug(e.getCause());
             System.Debug(e.getMessage());
             System.Debug(e.getStackTraceString());
-            final ExternalNotificationRouterRestResponse responseContent = new ExternalNotificationRouterRestResponse();
+            final RouterRestResponse responseContent = new RouterRestResponse();
             responseContent.data = null;
-            responseContent.errors.Add(new ExternalNotificationRouterRestError(e.getTypeName(), e.getMessage()));
+            responseContent.errors.Add(new RouterRestError(e.getTypeName(), e.getMessage()));
             RestContext.response.responseBody = Blob.valueOf(JSON.serialize(responseContent));
             RestContext.response.StatusCode = rest_HTTPStatusCodeConstants.INTERNAL_SERVER_ERROR;
         }
@@ -43,26 +43,26 @@ global inherited sharing class rest_ApexRouter {
 
     /**
     * @group	Framework level
-    * @description	ExternalNotificationRouterRestResponse class defines the response global envelop type
+    * @description	RouterRestResponse class defines the response global envelop type
     */
-    public class ExternalNotificationRouterRestResponse {
+    public class RouterRestResponse {
         public List<Object> data;
         public List<Object> errors;
 
-        public ExternalNotificationRouterRestResponse(){
+        public RouterRestResponse(){
             this.data = new List<Object>();
-            this.errors = new List<ExternalNotificationRouterRestError>();
+            this.errors = new List<RouterRestError>();
         }
     }
 
     /**
     * @group	Framework level
-    * @description	ExternalNotificationRouterRestError class defines the response envelop type for errors
+    * @description	RouterRestError class defines the response envelop type for errors
     */
-    public class ExternalNotificationRouterRestError {
+    public class RouterRestError {
         public String code;
         public String message;
-        public ExternalNotificationRouterRestError(final String code, final String message) {
+        public RouterRestError(final String code, final String message) {
             this.code = code;
             this.message = message;
         }

@@ -16,13 +16,13 @@ public inherited sharing abstract class rest_RestHandler {
     /*******************************************************************************************************
     * @description this is the Object structuring the response content.
     */
-    public rest_ApexRouter.ExternalNotificationRouterRestResponse responseContent;
+    public rest_ApexRouter.RouterRestResponse responseContent;
 
      /*******************************************************************************************************
     * @description Object constructor, initialise the responseContent object
     */
     public rest_RestHandler() {
-        this.responseContent = new rest_ApexRouter.ExternalNotificationRouterRestResponse();
+        this.responseContent = new rest_ApexRouter.RouterRestResponse();
     }
 
      /*******************************************************************************************************
